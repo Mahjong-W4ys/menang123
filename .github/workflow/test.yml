@@ -55,8 +55,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "jokersl0t"
-          git config --global user.email "irmgardeckoldt@gmail.com"
+          git config --global user.name "Mahjong-W4ys"
+          git config --global user.email "hedwigfesenfeld@gmail.com"
           git add *.html
           git commit -m "Generated HTML files from JSON"
           git push
