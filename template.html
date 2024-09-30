@@ -1081,7 +1081,7 @@
         "name": "{{meta-source}}",
         "logo": {
         "@type": "ImageObject",
-        "url": "{{image-logo}}"
+        "url": "{{imageLogo}}"
         }
         },
         "description": "{{meta-description}}"
@@ -1094,7 +1094,7 @@
     <div class="logo-container">
         <a href="https://{{account}}.github.io/{{repository}}/{{filename}}" class="logo">
             <amp-img title="{{meta-source}}" layout="responsive" height="50" width="120"
-                src="{{image-logo}}"
+                src="{{imageLogo}}"
                 alt="{{meta-source}}" noloading></amp-img>
         </a>
     </div>
@@ -1168,13 +1168,7 @@
             </span>
         </p>
 
-        <h1>{{title}}</h1>
-        <p><em><strong>Berita Menarik -</strong> </em>Big Bass Bonanza adalah slot yang menakjubkan. Dengan tema memancing yang menarik dan fitur bonus yang menguntungkan, permainan ini semakin banyak dimainkan.</p>
-        <p>Joko Santoso, seorang investor berani, memulai kariernya dengan menjelajahi industri perjudian. Kesuksesannya terlihat saat ia memproduksi mainan yang kini sangat diminati, mirip dengan bagaimana tim Persik menghadapi PSBS dalam laga menggembirakan yang berakhir dengan skor 4-2. Setiap gol dalam pertandingan itu menambah intensitas dan ketegangan, menciptakan pengalaman yang mendebarkan bagi para penggemar.</p>
-        <h2 style="text-align: center;">Kecintaan pada Big Bass Memicu Strategi Bisnis</h2>
-        <p>Desain yang ceria dan fitur menarik membuat Big Bass Bonanza menjadi pilihan tepat bagi pemain. Pengalaman bermain ini menginspirasi Joko dalam bisnisnya, sama seperti tim Persik yang menggunakan strategi cerdas untuk mengklaim kemenangan dalam pertandingan yang penuh aksi.</p>
-        <h2 style="text-align: center;">RTP dan Volatilitas yang Menarik</h2>
-        <p>Big Bass Bonanza memiliki RTP yang tinggi, sekitar 96%, menawarkan peluang menang yang menarik. Dengan volatilitas sedang, permainan ini cocok bagi pencari hadiah besar, seperti saat setiap gol Persik menambah kegembiraan dalam pertarungan melawan PSBS.</p>
+        {{content}}
 
         <div class="copyright">
             <div>
@@ -1196,7 +1190,7 @@
                 alt="login"></amp-img>
             LOGIN
         </a>
-        <a href="{{livechat-url}}" target="_blank" class="js_live_chat_link live-chat-link">
+        <a href="{{liveChatUrl}}" target="_blank" class="js_live_chat_link live-chat-link">
             <amp-img class="live-chat-icon" layout="intrinsic" height="75" width="75"
                 src="https://res.cloudinary.com/dak0kqjx3/image/upload/v1727246014/livechat_dhmswk.webp"
                 alt="livechat"></amp-img>
@@ -1206,7 +1200,7 @@
     
     <!-- Script forward query string -->
     <script async>
-        const domainName = "https://menang123play.com/register";
+        const domainName = "{{domainUrl}}";
         const queryString = window.location.search;
 
         const link1 = document.getElementById('link_daftar');
