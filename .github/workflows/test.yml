@@ -33,10 +33,30 @@ jobs:
           liveChatUrl=$(echo "$json_data" | jq -r '.[0]["livechat-url"]')
           imageLogo=$(echo "$json_data" | jq -r '.[0]["image-logo"]')
           metaSource=$(echo "$json_data" | jq -r '.[0]["meta-source"]')
+          templateType=$(echo "$json_data" | jq -r '.[0].template')
+          whitelabel=$(echo "$json_data" | jq -r '.[0].whitelabel')
+          referral=$(echo "$json_data" | jq -r '.[0].referral')
+          imageGif=$(echo "$json_data" | jq -r '.[0]["image-gif"]')
 
           escape_sed() {
               echo "$1" | sed -e 's/[\/&]/\\&/g'
           }
+
+          # Check if templateType is not empty
+          if [ -z "$templateType" ]; then
+              echo "Template type is missing or invalid."
+              exit 1
+          fi
+          
+          # Determine which template to use
+          if [ "$templateType" -eq 1 ]; then
+              templateFile="template.html"
+          elif [ "$templateType" -eq 2 ]; then
+              templateFile="template2.html"
+          else
+              echo "Unknown template type: $templateType"
+              exit 1
+          fi
 
           # Loop through each item in the dynamic array and create an HTML file
           echo "$json_data" | jq -c '.[0].dynamic[]' | while read -r item; do
@@ -61,16 +81,26 @@ jobs:
                 -e "s|{{image-banner}}|$image_banner|g" \
                 -e "s|{{liveChatUrl}}|$liveChatUrl|g" \
                 -e "s|{{content}}|$escaped_content|g" \
-                template.html > "$filename"
+                -e "s|{{whitelabel}}|$whitelabel|g" \
+                -e "s|{{referral}}|$referral|g" \
+                -e "s|{{imageGif}}|$imageGif|g" \
+                "$templateFile" > "$filename"
           done
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "Mahjong-W4ys"
-          git config --global user.email "hedwigfesenfeld@gmail.com"
-          git add *.html
-          git commit -m "Generated HTML files from JSON"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+            git config --global user.name "Mahjong-W4ys"
+            git config --global user.email "hedwigfesenfeld@gmail.com"
 
+            # Add the generated HTML files
+            git add *.html
+            
+            # Check if there are any changes to commit
+            if git diff --cached --quiet; then
+              echo "No changes to commit"
+            else
+              git commit -m "Generated HTML files from JSON"
+              git push
+            fi
+        env:
+            GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
