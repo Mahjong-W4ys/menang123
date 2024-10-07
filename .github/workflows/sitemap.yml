@@ -17,7 +17,7 @@ jobs:
       - name: Update index.html
         run: |
           # Define variables
-          REPO_URL="https://mahjong-w4ys.github.io/menang123/"
+          REPO_URL="https://Mahjong-W4ys.github.io/menang123/"
           INDEX_FILE="index.html"
           JSON_FILE="index.json"
           EXCLUDE_FILES=("index.html" "template.html" "template2.html")
@@ -90,7 +90,7 @@ jobs:
         
             # Add the initial URL
             echo '<url>' >> $TEMP_FILE
-            echo '  <loc>https://mahjong-w4ys.github.io/menang123/</loc>' >> $TEMP_FILE
+            echo '  <loc>https://Mahjong-W4ys.github.io/menang123/</loc>' >> $TEMP_FILE
             echo "  <lastmod>$(date -u +"%Y-%m-%dT%H:%M:%S+00:00")</lastmod>" >> $TEMP_FILE
             echo '  <priority>1.00</priority>' >> $TEMP_FILE
             echo '</url>' >> $TEMP_FILE
@@ -101,7 +101,7 @@ jobs:
                 LASTMOD=$(date -u +"%Y-%m-%dT%H:%M:%S+00:00")
         
                 echo "  <url>" >> $TEMP_FILE
-                echo "    <loc>https://mahjong-w4ys.github.io/menang123/${FILENAME}</loc>" >> $TEMP_FILE
+                echo "    <loc>https://Mahjong-W4ys.github.io/menang123/${FILENAME}</loc>" >> $TEMP_FILE
                 echo "    <lastmod>${LASTMOD}</lastmod>" >> $TEMP_FILE
                 echo "    <priority>0.80</priority>" >> $TEMP_FILE
                 echo "  </url>" >> $TEMP_FILE
