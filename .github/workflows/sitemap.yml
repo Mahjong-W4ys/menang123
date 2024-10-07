@@ -119,7 +119,7 @@ jobs:
               git config --global user.email "hedwigfesenfeld@gmail.com"
               
               # Add the generated HTML files
-              git add *.html
+              git add *.html *.xml
               
               # Check if there are any changes to commit
               if git diff --cached --quiet; then
